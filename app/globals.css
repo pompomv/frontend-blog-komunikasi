@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@custom-variant dark (&:is(.dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -13,11 +15,9 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 body {
@@ -34,9 +34,17 @@ body {
   line-height: 1.85;
 }
 
+.dark .article-content {
+  color: #d1d5db;
+}
+
 .article-content p {
   margin-bottom: 1.25rem;
   color: #374151;
+}
+
+.dark .article-content p {
+  color: #d1d5db;
 }
 
 /* Headings */
@@ -49,6 +57,11 @@ body {
   padding-bottom: 0.4rem;
   border-bottom: 2px solid #e5e7eb;
   letter-spacing: -0.01em;
+}
+
+.dark .article-content h3 {
+  color: #f3f4f6;
+  border-bottom-color: #374151;
 }
 
 /* Lists */
@@ -72,6 +85,10 @@ body {
   color: #374151;
 }
 
+.dark .article-content ul li {
+  color: #d1d5db;
+}
+
 .article-content ul li::before {
   content: '';
   position: absolute;
@@ -81,6 +98,10 @@ body {
   height: 6px;
   border-radius: 50%;
   background: #2563eb;
+}
+
+.dark .article-content ul li::before {
+  background: #3b82f6;
 }
 
 .article-content ol {
@@ -93,6 +114,10 @@ body {
   color: #374151;
 }
 
+.dark .article-content ol li {
+  color: #d1d5db;
+}
+
 /* Nested lists inside Practical Example boxes */
 .article-content div ul li::before {
   background: #6b7280;
@@ -101,10 +126,18 @@ body {
   top: 0.65rem;
 }
 
+.dark .article-content div ul li::before {
+  background: #9ca3af;
+}
+
 /* Strong */
 .article-content strong {
   color: #111827;
   font-weight: 600;
+}
+
+.dark .article-content strong {
+  color: #f3f4f6;
 }
 
 /* Blockquote */
@@ -116,6 +149,12 @@ body {
   border-radius: 0 0.5rem 0.5rem 0;
   font-style: italic;
   color: #1e40af;
+}
+
+.dark .article-content blockquote {
+  border-left-color: #3b82f6;
+  background: #1e3a8a;
+  color: #bfdbfe;
 }
 
 /* ── PRACTICAL EXAMPLE CARD ─────────────────────────────────────── */

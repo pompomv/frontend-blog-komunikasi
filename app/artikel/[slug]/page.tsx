@@ -72,7 +72,7 @@ export default async function ArticleDetail({
     .slice(0, 3);
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gray-50 dark:bg-slate-900 transition-colors duration-300">
 
       {/* ── HERO HEADER ─────────────────────────────────────────── */}
       <div
@@ -139,7 +139,7 @@ export default async function ArticleDetail({
         {/* Wave bottom */}
         <div className="w-full overflow-hidden leading-none">
           <svg viewBox="0 0 1440 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full block" style={{ height: '56px' }}>
-            <path d="M0,56 C480,0 960,0 1440,56 L1440,56 L0,56 Z" fill="#f9fafb" />
+            <path d="M0,56 C480,0 960,0 1440,56 L1440,56 L0,56 Z" className="fill-gray-50 dark:fill-slate-900 transition-colors duration-300" />
           </svg>
         </div>
       </div>
@@ -149,7 +149,7 @@ export default async function ArticleDetail({
 
         {/* Article image */}
         {article.image_url && (
-          <div className="relative w-full aspect-[16/7] rounded-2xl overflow-hidden shadow-xl mb-12 ring-1 ring-gray-200">
+          <div className="relative w-full aspect-[16/7] rounded-2xl overflow-hidden shadow-xl mb-12 ring-1 ring-gray-200 dark:ring-slate-700">
             <Image
               src={article.image_url}
               alt={article.title}
@@ -163,7 +163,7 @@ export default async function ArticleDetail({
 
         {/* Description / lead */}
         {article.description && (
-          <p className="text-xl text-gray-500 leading-relaxed mb-10 font-light border-l-4 pl-5 py-1"
+          <p className="text-xl text-gray-500 dark:text-slate-400 leading-relaxed mb-10 font-light border-l-4 pl-5 py-1 transition-colors duration-300"
              style={{ borderColor: gradFrom }}>
             {article.description}
           </p>
@@ -171,9 +171,9 @@ export default async function ArticleDetail({
 
         {/* Divider */}
         <div className="flex items-center gap-4 mb-10">
-          <div className="flex-1 h-px bg-gray-200" />
+          <div className="flex-1 h-px bg-gray-200 dark:bg-slate-700" />
           <div className="w-2 h-2 rounded-full" style={{ background: gradFrom }} />
-          <div className="flex-1 h-px bg-gray-200" />
+          <div className="flex-1 h-px bg-gray-200 dark:bg-slate-700" />
         </div>
 
         {/* Main content */}
@@ -183,24 +183,24 @@ export default async function ArticleDetail({
         />
 
         {/* ── BOTTOM DIVIDER ── */}
-        <div className="mt-16 pt-10 border-t border-gray-200 flex items-center justify-between">
+        <div className="mt-16 pt-10 border-t border-gray-200 dark:border-slate-800 flex items-center justify-between transition-colors duration-300">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors group"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors group"
           >
             <span className="group-hover:-translate-x-1 transition-transform duration-200">←</span>
             Back to all articles
           </Link>
-          <span className="text-xs text-gray-400">{mins} min read · {formattedDate}</span>
+          <span className="text-xs text-gray-400 dark:text-slate-500">{mins} min read · {formattedDate}</span>
         </div>
       </div>
 
       {/* ── RELATED POSTS ───────────────────────────────────────── */}
       {related.length > 0 && (
-        <section className="bg-white border-t border-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+        <section className="bg-white dark:bg-slate-950 border-t border-gray-100 dark:border-slate-800 py-16 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-extrabold text-gray-900 mb-2">Continue Reading</h2>
-            <p className="text-gray-500 text-sm mb-8">More articles from KombisBlog</p>
+            <h2 className="text-2xl font-extrabold text-gray-900 dark:text-white mb-2 transition-colors duration-300">Continue Reading</h2>
+            <p className="text-gray-500 dark:text-slate-400 text-sm mb-8 transition-colors duration-300">More articles from KombisBlog</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {related.map((p: any) => {
                 const [rf, rt] = SLUG_COLORS[p.slug] ?? ['#2563eb', '#4f46e5'];
@@ -208,7 +208,7 @@ export default async function ArticleDetail({
                   <Link
                     key={p.slug}
                     href={`/artikel/${p.slug}`}
-                    className="group flex flex-col rounded-2xl overflow-hidden border border-gray-100 hover:border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                    className="group flex flex-col rounded-2xl overflow-hidden border border-gray-100 dark:border-slate-800 hover:border-gray-200 dark:hover:border-slate-600 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white dark:bg-slate-900"
                   >
                     <div
                       className="h-24 flex items-end p-4"
@@ -218,11 +218,11 @@ export default async function ArticleDetail({
                         {CATEGORY_LABEL[p.slug] ?? 'Article'}
                       </span>
                     </div>
-                    <div className="flex-1 p-5 bg-white">
-                      <h3 className="font-bold text-gray-900 text-sm leading-snug mb-2 group-hover:text-blue-600 transition-colors">
+                    <div className="flex-1 p-5">
+                      <h3 className="font-bold text-gray-900 dark:text-white text-sm leading-snug mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                         {p.title}
                       </h3>
-                      <p className="text-gray-400 text-xs line-clamp-2">{p.description}</p>
+                      <p className="text-gray-400 dark:text-slate-500 text-xs line-clamp-2 transition-colors duration-300">{p.description}</p>
                     </div>
                   </Link>
                 );

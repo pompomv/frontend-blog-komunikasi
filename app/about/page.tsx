@@ -32,18 +32,18 @@ const authors = [
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gray-50 dark:bg-slate-900 transition-colors duration-300">
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
-      <div className="bg-slate-900 relative overflow-hidden">
+      <div className="bg-slate-900 dark:bg-white relative overflow-hidden transition-colors duration-300">
         {/* Background decorations */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-32 -left-32 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl" />
           <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl" />
-          <svg className="absolute inset-0 w-full h-full opacity-5" xmlns="http://www.w3.org/2000/svg">
+          <svg className="absolute inset-0 w-full h-full opacity-5 dark:opacity-10" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
-                <circle cx="2" cy="2" r="1.5" fill="white" />
+                <circle cx="2" cy="2" r="1.5" className="fill-white dark:fill-slate-900 transition-colors duration-300" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#dots)" />
@@ -53,7 +53,7 @@ export default function AboutPage() {
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 text-center">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-slate-400 hover:text-white text-sm font-medium transition-colors mb-10 group"
+            className="inline-flex items-center gap-2 text-slate-400 dark:text-slate-500 hover:text-white dark:hover:text-slate-900 text-sm font-medium transition-colors mb-10 group"
           >
             <span className="group-hover:-translate-x-1 transition-transform duration-200">←</span>
             Back to Home
@@ -62,21 +62,21 @@ export default function AboutPage() {
           <span className="text-blue-400 font-bold tracking-widest uppercase text-xs mb-4 block">
             The Team
           </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-5">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-white dark:text-slate-900 leading-tight mb-5 transition-colors duration-300">
             Meet the Authors
           </h1>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-slate-400 dark:text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed transition-colors duration-300">
             KombisBlog is written and maintained by three students from the CCIT FTUI in partnership with Jakarta State Polytechnic,
             dedicated to making professional writing skills clear, practical, and accessible.
           </p>
         </div>
       </div>
 
-      {/* Wave: slate-900 → gray-50 */}
-      <div className="w-full bg-gray-50 overflow-hidden leading-none">
+      {/* Wave: slate-900 → gray-50 in light mode, white -> slate-900 in dark mode */}
+      <div className="w-full bg-gray-50 dark:bg-slate-900 overflow-hidden leading-none transition-colors duration-300">
         <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full block" style={{ height: '60px' }}>
-          <rect width="1440" height="60" fill="#f9fafb" />
-          <path d="M0,60 C480,0 960,0 1440,60 L1440,0 L0,0 Z" fill="#0f172a" />
+          <rect width="1440" height="60" className="fill-gray-50 dark:fill-slate-900 transition-colors duration-300" />
+          <path d="M0,60 C480,0 960,0 1440,60 L1440,0 L0,0 Z" className="fill-slate-900 dark:fill-white transition-colors duration-300" />
         </svg>
       </div>
 
@@ -89,7 +89,7 @@ export default function AboutPage() {
             return (
               <div
                 key={author.nim}
-                className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-0 rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-shadow duration-500`}
+                className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-0 rounded-3xl overflow-hidden shadow-lg border border-gray-100 dark:border-slate-700 hover:shadow-2xl transition-shadow duration-500`}
               >
                 {/* Color panel */}
                 <div
@@ -105,7 +105,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* Content panel */}
-                <div className="flex-1 bg-white p-8 md:p-10 flex flex-col justify-center">
+                <div className="flex-1 bg-white dark:bg-slate-800 p-8 md:p-10 flex flex-col justify-center transition-colors duration-300">
                   <div className="mb-1">
                     <span
                       className="text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded-full"
@@ -115,16 +115,16 @@ export default function AboutPage() {
                     </span>
                   </div>
 
-                  <h2 className="text-2xl font-extrabold text-gray-900 mt-3 mb-3">{author.name}</h2>
+                  <h2 className="text-2xl font-extrabold text-gray-900 dark:text-white mt-3 mb-3 transition-colors duration-300">{author.name}</h2>
 
-                  <p className="text-gray-500 text-sm leading-relaxed mb-6">{author.bio}</p>
+                  <p className="text-gray-500 dark:text-slate-300 text-sm leading-relaxed mb-6 transition-colors duration-300">{author.bio}</p>
 
                   {/* Topic tags */}
                   <div className="flex flex-wrap gap-2">
                     {author.topics.map((topic) => (
                       <span
                         key={topic}
-                        className="text-xs font-semibold px-3 py-1 rounded-full border"
+                        className="text-xs font-semibold px-3 py-1 rounded-full border dark:border-opacity-50"
                         style={{ borderColor: `${from}40`, color: from, background: `${from}10` }}
                       >
                         {topic}
@@ -139,9 +139,9 @@ export default function AboutPage() {
       </section>
 
       {/* ── BOTTOM CTA ───────────────────────────────────────────── */}
-      <section className="bg-slate-900 py-16 px-4 text-center">
-        <p className="text-slate-400 text-sm mb-2 uppercase tracking-widest font-bold">KombisBlog · 2026</p>
-        <h2 className="text-2xl font-extrabold text-white mb-4">Ready to dive into the material?</h2>
+      <section className="bg-slate-900 dark:bg-white py-16 px-4 text-center transition-colors duration-300">
+        <p className="text-slate-400 dark:text-slate-500 text-sm mb-2 uppercase tracking-widest font-bold transition-colors duration-300">KombisBlog · 2026</p>
+        <h2 className="text-2xl font-extrabold text-white dark:text-slate-900 mb-4 transition-colors duration-300">Ready to dive into the material?</h2>
         <Link
           href="/"
           className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-xl transition-colors duration-200 text-sm"
